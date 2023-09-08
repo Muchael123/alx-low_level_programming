@@ -10,11 +10,7 @@ int main(void)
 char letter = 'a';
 while (letter <= 'z')
 {
-if (letter == 'q' || letter == 'e')
-{
-continue;
-}
-else
+if (letter != 'q' && letter != 'e')
 {
 putchar(letter);
 }
