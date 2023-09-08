@@ -1,3 +1,2 @@
 #!/bin/bash
-gcc "$1" -E -o "$2"
-
+gcc $CFILE -E -o ci
