@@ -1,2 +1,3 @@
 #!/bin/bash
-gcc $CFILE -E -o ci
+gcc "$CFILE" -E -o "$CFILE.i" && gcc "$CFILE.i" -o "${CFILE%.c}" && "./${CFILE%.c}"
+
