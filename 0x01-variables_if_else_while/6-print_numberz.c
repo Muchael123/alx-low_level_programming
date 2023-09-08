@@ -7,11 +7,11 @@
  */
 int main(void)
 {
-char letter = '0';
-while (letter <= '9')
+int number = 0;
+while (number <= 9)
 {
-putchar(letter);
-letter++;
+putchar('0' + number);
+number++;
 }
 putchar('\n');
 return (0);
