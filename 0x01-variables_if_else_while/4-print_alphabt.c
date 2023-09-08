@@ -17,9 +17,9 @@ continue;
 else
 {
 putchar(letter);
-putchar('\n');
 }
 letter++;
 }
+putchar('\n');
 return (0);
 }
