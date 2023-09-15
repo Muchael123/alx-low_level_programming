@@ -2,12 +2,15 @@
 /* more headers goes there */
 
 /**
- * _isupper- checks for uppercase letters
  *  main - Entry point
  *  if else statements
+ * _isupper-checks if a char is upper case
  *  Return: Always 0 (Success)
  *
  */
+int main(void)
+{
+char m = 'A';
 int _isupper(int c)
 {
 if (c >= 'A' && c <= 'Z')
@@ -19,9 +22,6 @@ else
 return (0);
 }
 }
-int main(void)
-{
-char m = 'A';
 if (_isupper(m))
 printf("hello uppercase");
 
