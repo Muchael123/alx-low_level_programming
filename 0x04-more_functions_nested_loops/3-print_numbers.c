@@ -2,17 +2,17 @@
 
 /**
 *print_numbers - print 0123456789
-* owned by Bwave ICT
+* owned by maich
 *Return: void
 */
 
 void print_numbers(void)
 {
-	char c;
+	char num;
 
-	for (c = '0'; c <= '9'; c++)
+	for (num = '0'; num <= '9'; num++)
 	{
-		_putchar(c);
+		_putchar(num);
 	}
 	_putchar('\n');
 }
