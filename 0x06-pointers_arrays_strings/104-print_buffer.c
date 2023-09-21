@@ -1,90 +1,52 @@
+#include "main.h"
 #include <stdio.h>
-/**
-* first_func - 1st function needed to run print_buffer
-* @b: buffer
-* @k: int
-* @l: int
-* @i: int
-*
-* Return: void
-*/
-void first_func(char *b, int k, int l, int i)
-{
-	k = (i / 10) * 10;
-	for (l = k; l <= i; l++)
-	{
-		if (b[l] >= 32 && b[l] <= 126)
-			putchar(b[l]);
-		else
-			putchar('.');
-	}
-
-	putchar(10);
-	printf("%08x: ", i + 1);
-}
 
 /**
-* sec_func - second function needed to run print_buffer
-* @b: buffer
-* @l: int
-* @l_phase: int
-* @size: int
-*/
-void sec_func(char *b, int l, int l_phase, int size)
-{
-	for (l = l_phase; l <= (l_phase + ((l_phase + 9) - size)); l++)
-	{
-		putchar(' ');
-		putchar(' ');
-	}
-	putchar(' ');
-	putchar(' ');
-	for (l = l_phase; l < size; l++)
-	{
-		if (b[l] >= 32 && b[l] <= 126)
-			putchar(b[l]);
-		else
-			putchar('.');
-	}
-}
-
-/**
-* print_buffer - prints buffer
-* @b: buffer
-* @size: buffer size
-*
-* Return: void
+* print_buffer - Prints a buffer 10 bytes at a time, starting with
+*                the byte position, then showing the hex content,
+*                then displaying printable charcaters.
+* @b: The buffer to be printed.
+* @size: The number of bytes to be printed from the buffer.
 */
 void print_buffer(char *b, int size)
 {
-	int i, j, k, l, z;
+	int byte, index;
 
-	int l_phase;
-
-	l_phase = z = (size / 10) * 10;
-	j = 1;
-	l = k = 0;
-
-	for (i = 0; i < size; i++)
+	for (byte = 0; byte < size; byte += 10)
 	{
-		if (i == 0)
-			printf("%08x: ", i)
-				printf("%02x", b[i]);
+		printf("%08x: ", byte);
 
-		if (!(j % 2))
-			putchar('  ');
+		for (index = 0; index < 10; index++)
+		{
+			if ((index + byte) >= size)
+				printf("  ");
 
-		if (((i % 10 == 9) && i > 0))
-		{
-			first_func(b, k, l, i);
+			else
+				printf("%02x", *(b + index + byte));
+
+			if ((index % 2) != 0 && index != 0)
+				printf(" ");
 		}
-		else if (i == size - 1)
+
+		for (index = 0; index < 10; index++)
 		{
-			sec_func(b, l, l_phase, size);
+			if ((index + byte) >= size)
+				break;
+
+			else if (*(b + index + byte) >= 31 &&
+					*(b + index + byte) <= 126)
+				printf("%c", *(b + index + byte));
+
+			else
+				printf(".");
 		}
-		j++;
+
+		if (byte >= size)
+			continue;
+
+		printf("\n");
 	}
-	putchar('\n');
-	if (size == 0)
-		putchar('\n');
+
+	if (size <= 0)
+		printf("\n");
 }
